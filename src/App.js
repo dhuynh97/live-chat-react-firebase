@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import './App.css';
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import 'firebase/analytics';
 
-import { useAuthState } 'react-firebase-hooks/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
 const firebaseConfig = {
@@ -31,11 +32,12 @@ function App() {
   return (
     <div className="App">
       <header>
-
+        <h1>⚛️🔥💬</h1>
+        <SignOut />
       </header>
 
       <section>
-        {user ? <ChatRoom /> : <SignIn/>}
+        {user ? <ChatRoom /> : <SignIn />}
       </section>
 
     </div>
@@ -43,24 +45,32 @@ function App() {
 }
 
 function SignIn() {
+
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     auth.signInWithPopup(provider);
   }
 
   return (
-    <button onClick={signInWithGoogle}>Sign in with Google</button>
+    <>
+      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+      <p>Do not violate the community guidelines or you will be banned for life!</p>
+    </>
   )
+
 }
 
 function SignOut() {
   return auth.currentUser && (
 
-    <button onClick={() => auth.signOut()}>Sign Out</button>
+     <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+
   )
 }
 
 function ChatRoom() {
+
+  const dummy = useRef();
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(25);
 
@@ -101,6 +111,19 @@ function ChatRoom() {
       <button type="submit" disabled={!formValue}>🕊️</button>
 
     </form>
+  </>)
+}
+
+function ChatMessage(props) {
+  const { text, uid, photoURL } = props.message;
+
+  const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+
+  return (<>
+    <div className={`message ${messageClass}`}>
+      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
+      <p>{text}</p>
+    </div>
   </>)
 }
 
