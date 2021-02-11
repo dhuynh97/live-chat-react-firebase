@@ -1,0 +1,13 @@
+[debug] [2021-02-11T01:48:00.599Z] ----------------------------------------------------------------------
+[debug] [2021-02-11T01:48:00.600Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2021-02-11T01:48:00.601Z] CLI Version:   9.3.0
+[debug] [2021-02-11T01:48:00.601Z] Platform:      darwin
+[debug] [2021-02-11T01:48:00.601Z] Node Version:  v14.4.0
+[debug] [2021-02-11T01:48:00.602Z] Time:          Wed Feb 10 2021 17:48:00 GMT-0800 (Pacific Standard Time)
+[debug] [2021-02-11T01:48:00.602Z] ----------------------------------------------------------------------
+[debug] [2021-02-11T01:48:00.602Z] 
+[debug] [2021-02-11T01:48:00.606Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-02-11T01:48:00.607Z] > authorizing via signed-in user
+[debug] [2021-02-11T01:48:00.607Z] [iam] checking project live-chat-1ba24 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2021-02-11T01:48:00.609Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/live-chat-1ba24:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
