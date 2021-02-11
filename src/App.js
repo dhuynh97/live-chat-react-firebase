@@ -53,8 +53,8 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>1Sign in with Google</button>
-      <p>skrrrr skrr! you just handed me all of ur personal data for free @Meh!</p>
+      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
+      <p>Hello there, i like cheese 🧀</p>
     </>
   )
 
