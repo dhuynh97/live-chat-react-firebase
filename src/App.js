@@ -19,7 +19,9 @@ const firebaseConfig = {
   measurementId: "G-J5KNPBT0XP"
 };
 
-firebase.initializeApp(firebaseConfig);
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
 firebase.analytics();
 
 const auth = firebase.auth();
@@ -54,7 +56,7 @@ function SignIn() {
   return (
     <>
       <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Hello there, i like cheese 🧀</p>
+      <p>Hello there, and welcome friend.</p>
     </>
   )
 
