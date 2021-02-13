@@ -1,5 +1,5 @@
 body {
-  background-color: #282c34;
+  background-color: #fff;
 }
 
 .App {
@@ -10,7 +10,7 @@ body {
 
 .App header {
   background-color: #054e5b;
-  height: 10vh;
+  height: 8vh;
   min-height: 50px;
   color: white;
   position: fixed;
@@ -23,6 +23,7 @@ body {
   z-index: 99;
   padding: 10px;
   box-sizing: border-box;
+  border-radius: 5px;
 }
 
 .App section {
@@ -31,6 +32,12 @@ body {
   justify-content: center;
   min-height: 100vh;
   background-color: #fff;
+  border: 1px solid #c0c0c0;
+  border-radius: 5px;
+}
+
+.App h1{
+  
 }
 
 main {
@@ -48,6 +55,7 @@ main::-webkit-scrollbar {
 
 main::-webkit-scrollbar-track {
   background: #1e1e24;
+  width: 10px;
 }
 
 main::-webkit-scrollbar-thumb {
@@ -75,8 +83,8 @@ input {
   line-height: 1.5;
   width: 100%;
   font-size: 1.5rem;
-  background: rgb(58, 58, 58);
-  color: white;
+  background: #c0c0c0;
+  color: black;
   outline: none;
   border: none;
   padding: 0 10px;
@@ -107,7 +115,12 @@ button:disabled {
   margin: 0 auto;
 }
 
-
+.button-text{
+  color: #282c34;
+  background: transparent;
+  max-width: 400px;
+  margin: 0 auto;
+}
 
 
 ul, li {
@@ -138,7 +151,7 @@ p {
 
 .sent p {
   color: white;
-  background: #0b93f6;
+  background: #054e5b;
   align-self: flex-end;
 }
 .received p {

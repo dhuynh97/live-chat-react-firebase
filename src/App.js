@@ -5,6 +5,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/analytics';
+import GoogleButton from 'react-google-button';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -19,6 +20,7 @@ const firebaseConfig = {
   measurementId: "G-J5KNPBT0XP"
 };
 
+//Initialize Firebase App only if it has not already been initalized.
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -55,8 +57,8 @@ function SignIn() {
 
   return (
     <>
-      <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button>
-      <p>Hello there, and welcome friend.</p>
+      <GoogleButton className="sign-in" onClick={signInWithGoogle}>Sign in with Google</GoogleButton>
+      <p className="button-text">Hello there, and welcome friend!</p>
     </>
   )
 
@@ -65,7 +67,7 @@ function SignIn() {
 function SignOut() {
   return auth.currentUser && (
 
-     <button className="sign-out" onClick={() => auth.signOut()}>Sign Out if ur a lil hoe bye</button>
+     <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
 
   )
 }
@@ -108,9 +110,9 @@ function ChatRoom() {
 
     <form onSubmit={sendMessage}>
 
-      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="enter your message... wyd bich" />
+      <input value={formValue} onChange={(e) => setFormValue(e.target.value)} placeholder="Message..." />
 
-      <button type="submit" disabled={!formValue}>send~</button>
+      <button type="submit" disabled={!formValue}>Send</button>
 
     </form>
   </>)
