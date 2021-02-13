@@ -6,7 +6,6 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/analytics';
 import GoogleButton from 'react-google-button';
-import GoogleLogout form 'react-google-login';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
