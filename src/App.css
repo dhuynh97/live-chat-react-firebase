@@ -51,10 +51,12 @@ main {
 
 main::-webkit-scrollbar {
   width: 0.25rem;
+  
 }
 
 main::-webkit-scrollbar-track {
   background: #1e1e24;
+  border-radius: 5px;
   width: 10px;
 }
 

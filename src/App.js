@@ -6,6 +6,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/analytics';
 import GoogleButton from 'react-google-button';
+import GoogleLogout form 'react-google-login';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
@@ -67,7 +68,7 @@ function SignIn() {
 function SignOut() {
   return auth.currentUser && (
 
-     <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+     <button className="sign-out" buttonText='Logout' onClick={() => auth.signOut()}>Sign Out</button>
 
   )
 }
