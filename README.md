@@ -4,4 +4,8 @@ A full-stack real-time messaging application I developed using React for the fro
 ![](chatdemo.gif)
 
 ### Google Authentication
+Google Authentication for easy user sign-up
 ![](googledemo.gif)
+### Google Firebase Backend
+Google Firebase back-end for real-time update support
+![](firebasedemo.png)
