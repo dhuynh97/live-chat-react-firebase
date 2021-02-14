@@ -99,7 +99,7 @@ input {
 
 button {
   background-color: #3a3b3c;
-  border: solid #b0b3b8;
+  border: px solid #b0b3b8;
   height: 4vh;
   color: #e4e6eb;
   padding: 15px 20px;
