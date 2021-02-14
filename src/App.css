@@ -68,7 +68,7 @@ main::-webkit-scrollbar-thumb {
 }
 
 form {
-  height: 5vh;
+  height: 5.3vh;
   position: fixed;
   bottom: 0;
   background-color: transparent;
@@ -81,7 +81,7 @@ form {
 form button {
   width: 20%;
   background-color: #054e5b;
-  height: 5vh;
+  height: 5.3vh;
   border-radius: 5px;
 }
 
@@ -103,7 +103,7 @@ button {
   border: none;
   height: 4vh;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
