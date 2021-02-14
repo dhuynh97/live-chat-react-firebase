@@ -10,6 +10,7 @@ import GoogleButton from 'react-google-button';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 
+// Firebase configuration from live-chat app
 const firebaseConfig = {
   apiKey: "AIzaSyDV8EIxZT83Bi_jtCDXEc9MOpBZWvfwrQw",
   authDomain: "live-chat-1ba24.firebaseapp.com",
@@ -24,6 +25,7 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
+//Initialize Firebase Analytics
 firebase.analytics();
 
 const auth = firebase.auth();
@@ -36,7 +38,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Daniel's Hangout 💬</h1>
+        <h1>Daniel's Hangout 🦈</h1>
         <SignOut />
       </header>
 
@@ -48,6 +50,8 @@ function App() {
   );
 }
 
+
+// Function to sign in with google's button and allows user to log in with Gmail account.
 function SignIn() {
 
   const signInWithGoogle = () => {
@@ -59,7 +63,7 @@ function SignIn() {
     <>
       <GoogleButton className="sign-in" onClick={signInWithGoogle}>Sign in with Google</GoogleButton>
       <p className="button-text">Hey there, glad to see you here.</p>
-      <p className="button-text">Sign in and come drop a message!</p>
+      <p className="button-text">Sign in with your email to come drop a message.</p>
     </>
   )
 
@@ -75,6 +79,9 @@ function SignOut() {
 
 function ChatRoom() {
 
+  // dummy useRef to scroll down every time a new message is sent.
+  // Stores message data in Firestore collection called 'messages'
+  // Caps the viewing limit of all messages to 1000, which should be plenty.
   const dummy = useRef();
   const messagesRef = firestore.collection('messages');
   const query = messagesRef.orderBy('createdAt').limit(1000);
@@ -83,19 +90,24 @@ function ChatRoom() {
 
   const [formValue, setFormValue] = useState('');
 
-
+  // Wait for the message to be sent by user hitting submit button.
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { uid, photoURL, email} = auth.currentUser;
+    // Collect uid email, and user's photo from Firebase gmail account
+    const { uid, photoURL, email } = auth.currentUser;
+    const name = auth.currentUser.displayName;
+    
 
 
+    // After the message is sent, it will add all this data to messages collection in Firebase
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       photoURL,
-      email
+      email,
+      name
     })
 
     setFormValue('');
@@ -122,10 +134,11 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
-  
-  const name = auth.currentUser.displayName;
+  // Collect user data to input into message object
+  const { text, uid, photoURL, name } = props.message;
+  // Collect username from Firebase auth of currentUser
 
+  // Differentiate whether the message was sent or received by user
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
   const messageUserClass = uid === auth.currentUser.uid ? 'sentUser' : 'receivedUser';
 
