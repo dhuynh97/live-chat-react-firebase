@@ -20,7 +20,7 @@ const firebaseConfig = {
   measurementId: "G-J5KNPBT0XP"
 };
 
-//Initialize Firebase App only if it has not already been initalized.
+//Initialize Firebase App only if it has not already been initialized.
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Daniel's Place 🏡</h1>
+        <h1>Daniel's Hangout 💬</h1>
         <SignOut />
       </header>
 
