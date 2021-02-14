@@ -20,7 +20,7 @@ const firebaseConfig = {
   measurementId: "G-J5KNPBT0XP"
 };
 
-//Initialize Firebase App only if it has not already been initalized.
+//Initialize Firebase App only if it has not already been initialized.
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -36,7 +36,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Daniel's Place 🏡</h1>
+        <h1>Daniel's Hangout 💬</h1>
         <SignOut />
       </header>
 
@@ -58,7 +58,8 @@ function SignIn() {
   return (
     <>
       <GoogleButton className="sign-in" onClick={signInWithGoogle}>Sign in with Google</GoogleButton>
-      <p className="button-text">Hello there, and welcome friend!</p>
+      <p className="button-text">Hey there, glad to see you here.</p>
+      <p className="button-text">Sign in and come drop a message!</p>
     </>
   )
 
@@ -86,13 +87,15 @@ function ChatRoom() {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { uid, photoURL } = auth.currentUser;
+    const { uid, photoURL, email} = auth.currentUser;
+
 
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL
+      photoURL,
+      email
     })
 
     setFormValue('');
@@ -120,13 +123,19 @@ function ChatRoom() {
 
 function ChatMessage(props) {
   const { text, uid, photoURL } = props.message;
+  
+  const name = auth.currentUser.displayName;
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
+  const messageUserClass = uid === auth.currentUser.uid ? 'sentUser' : 'receivedUser';
 
   return (<>
+    <div className={`userName ${messageUserClass}`}> <usernameText>{name}</usernameText> </div>
     <div className={`message ${messageClass}`}>
-      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
+      
+      <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} alt="" />
       <p>{text}</p>
+
     </div>
   </>)
 }
