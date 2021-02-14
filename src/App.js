@@ -58,7 +58,8 @@ function SignIn() {
   return (
     <>
       <GoogleButton className="sign-in" onClick={signInWithGoogle}>Sign in with Google</GoogleButton>
-      <p className="button-text">Hello there, and welcome friend!</p>
+      <p className="button-text">Hey there, glad to see you here.</p>
+      <p className="button-text">Sign in and come drop a message!</p>
     </>
   )
 
@@ -67,7 +68,7 @@ function SignIn() {
 function SignOut() {
   return auth.currentUser && (
 
-     <button className="sign-out" buttonText='Logout' onClick={() => auth.signOut()}>Sign Out</button>
+     <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
 
   )
 }
@@ -119,7 +120,7 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
-  const { text, uid, photoURL } = props.message;
+  const { text, uid, photoURL, createdAt} = props.message;
 
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
 
@@ -127,6 +128,7 @@ function ChatMessage(props) {
     <div className={`message ${messageClass}`}>
       <img src={photoURL || 'https://api.adorable.io/avatars/23/abott@adorable.png'} />
       <p>{text}</p>
+      <a></a>
     </div>
   </>)
 }
