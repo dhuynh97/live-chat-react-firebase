@@ -95,7 +95,9 @@ function ChatRoom() {
     e.preventDefault();
 
     // Collect uid email, and user's photo from Firebase gmail account
-    const { uid, photoURL, email} = auth.currentUser;
+    const { uid, photoURL, email } = auth.currentUser;
+    const name = auth.currentUser.displayName;
+    
 
 
     // After the message is sent, it will add all this data to messages collection in Firebase
@@ -104,7 +106,8 @@ function ChatRoom() {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
       photoURL,
-      email
+      email,
+      name
     })
 
     setFormValue('');
@@ -132,9 +135,8 @@ function ChatRoom() {
 
 function ChatMessage(props) {
   // Collect user data to input into message object
-  const { text, uid, photoURL } = props.message;
+  const { text, uid, photoURL, name } = props.message;
   // Collect username from Firebase auth of currentUser
-  const name = auth.currentUser.displayName;
 
   // Differentiate whether the message was sent or received by user
   const messageClass = uid === auth.currentUser.uid ? 'sent' : 'received';
