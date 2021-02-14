@@ -4,3 +4,4 @@ A full-stack real-time messaging application I developed using React for the fro
 ![](chatdemo.gif)
 
 ### Google Authentication
+![](googledemo.gif)
